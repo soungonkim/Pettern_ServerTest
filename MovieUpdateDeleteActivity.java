@@ -280,6 +280,7 @@ public class MovieUpdateDeleteActivity extends AppCompatActivity {
             JSONObject jsonObject = httpJsonParser.makeHttpRequest(
                     BASE_URL + "update_movie.php", "POST", httpParams);
             try {
+                System.out.println(jsonObject);
                 success = jsonObject.getInt(KEY_SUCCESS);
             } catch (JSONException e) {
                 e.printStackTrace();

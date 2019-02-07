@@ -52,6 +52,7 @@ public class MovieListingActivity extends AppCompatActivity {
             //Display progress bar
             pDialog = new ProgressDialog(MovieListingActivity.this);
             pDialog.setMessage("Loading movies. Please wait...");
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%DIALOG");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
@@ -59,18 +60,25 @@ public class MovieListingActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%in doInBackground");
             HttpJsonParser httpJsonParser = new HttpJsonParser();
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%httpjsonparser Object made");
+
             JSONObject jsonObject = httpJsonParser.makeHttpRequest(
                     BASE_URL + "fetch_all_movies.php", "GET", null);
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%Json Object made");
+
             try {
                 int success = jsonObject.getInt(KEY_SUCCESS);
                 JSONArray movies;
                 if (success == 1) {
                     movieList = new ArrayList<>();
                     movies = jsonObject.getJSONArray(KEY_DATA);
+                    System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%movies Object made");
                     //Iterate through the response and populate movies list
                     for (int i = 0; i < movies.length(); i++) {
                         JSONObject movie = movies.getJSONObject(i);
+                        System.out.println(movie);
                         Integer movieId = movie.getInt(KEY_MOVIE_ID);
                         String movieName = movie.getString(KEY_MOVIE_NAME);
                         HashMap<String, String> map = new HashMap<String, String>();
@@ -80,6 +88,7 @@ public class MovieListingActivity extends AppCompatActivity {
                     }
                 }
             } catch (JSONException e) {
+                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%Error made");
                 e.printStackTrace();
             }
             return null;

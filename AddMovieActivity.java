@@ -103,20 +103,29 @@ public class AddMovieActivity extends AppCompatActivity {
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%DIALOG");
+
         }
 
         @Override
         protected String doInBackground(String... params) {
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%in doInBackground");
+
             HttpJsonParser httpJsonParser = new HttpJsonParser();
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%httpjsonparser Object made");
+
             Map<String, String> httpParams = new HashMap<>();
             //Populating request parameters
             httpParams.put(KEY_MOVIE_NAME, movieName);
             httpParams.put(KEY_GENRE, genre);
             httpParams.put(KEY_YEAR, year);
             httpParams.put(KEY_RATING, rating);
-            JSONObject jsonObject = httpJsonParser.makeHttpRequest(
-                    BASE_URL + "add_movie.php", "POST", httpParams);
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%  PUT");
+
+            JSONObject jsonObject = httpJsonParser.makeHttpRequest(BASE_URL + "add_movie.php", "POST", httpParams);
             try {
+                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%Json Object made");
+
                 success = jsonObject.getInt(KEY_SUCCESS);
             } catch (JSONException e) {
                 e.printStackTrace();
