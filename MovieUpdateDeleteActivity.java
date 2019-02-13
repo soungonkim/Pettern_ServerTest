@@ -30,7 +30,7 @@ public class MovieUpdateDeleteActivity extends AppCompatActivity {
     private static final String KEY_GENRE = "genre";
     private static final String KEY_YEAR = "year";
     private static final String KEY_RATING = "rating";
-    private static final String BASE_URL = "http://192.168.0.13/movies/";
+    private static final String BASE_URL = "http://211.206.115.80/movies/";
     private String movieId;
     private EditText movieNameEditText;
     private EditText genreEditText;

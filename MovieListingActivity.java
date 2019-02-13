@@ -28,7 +28,7 @@ public class MovieListingActivity extends AppCompatActivity {
     private static final String KEY_DATA = "data";
     private static final String KEY_MOVIE_ID = "movie_id";
     private static final String KEY_MOVIE_NAME = "movie_name";
-    private static final String BASE_URL = "http://192.168.0.13/movies/";
+    private static final String BASE_URL = "http://211.206.115.80/movies/";
     private ArrayList<HashMap<String, String>> movieList;
     private ListView movieListView;
     private ProgressDialog pDialog;
